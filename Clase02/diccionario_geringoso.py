@@ -7,7 +7,6 @@ def traductor_geringoso(palabra):
 	posicion = 0
 	for i,letra in enumerate(palabra):
 		if letra.lower() in vocales:
-			print(palabra[i-1] in Umuda,i-1)
 			if letra=='u' and (palabra[i-1] in Umuda) and (i-1)>-1:
 				palabra_geringoso += letra
 			else:
@@ -17,7 +16,6 @@ def traductor_geringoso(palabra):
 		else:
 			palabra_geringoso += letra
 		posicion +=1
-		print(palabra_geringoso)
 	return palabra_geringoso
 
 def diccionario_geringoso(lista_palabras):

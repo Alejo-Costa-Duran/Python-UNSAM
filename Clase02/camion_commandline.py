@@ -14,7 +14,7 @@ def costo_camion(nombre_archivo):
 			cantidad_cajones = int(fila[1])
 			precio_total_pagado += precio_por_cajon*cantidad_cajones
 		except:
-			print("Hay un error en esta fila:", fila)
+			print("Hay un error en esta fila:", fila) #Imprime en pantalla la fila donde encontró un error
 	archivo.close()
 	return precio_total_pagado
 

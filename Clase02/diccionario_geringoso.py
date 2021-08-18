@@ -1,22 +1,12 @@
 def traductor_geringoso(palabra):
 	'Traduce el input al geringoso'
 	palabra_geringoso = ''
-	vocales = 'aeiouu'
-	vocales_tildes = 'áéíóúü'
-	Umuda = 'QqGg'
-	posicion = 0
-	for i,letra in enumerate(palabra):
-		if letra.lower() in vocales:
-			if letra=='u' and (palabra[i-1] in Umuda) and (i-1)>-1:
-				palabra_geringoso += letra
-			else:
-				palabra_geringoso += letra+'p'+letra.lower()
-		elif (letra.lower() in vocales_tildes):
-			palabra_geringoso +=letra+'p'+vocales[vocales_tildes.find(letra.lower())]
-		else:
-			palabra_geringoso += letra
-		posicion +=1
-	return palabra_geringoso
+	vocales = 'aeiou'
+	for letra in palabra:
+		palabra_geringoso += letra
+		if letra in vocales:
+			palabra_geringoso +='p'+letra
+	return palabra_geringoso #No funciona bien con palabras con varias vocales juntas
 
 def diccionario_geringoso(lista_palabras):
 	'Devuelve un diccionario geringoso a partir de una lista de palabras'
@@ -25,6 +15,6 @@ def diccionario_geringoso(lista_palabras):
 		diccionario_geringoso[palabras] = traductor_geringoso(palabras)
 	return diccionario_geringoso
 
-palabras_a_traducir = ['pingüino', 'canción','Alargue']
+palabras_a_traducir = ['banana', 'manzana','mandarina']
 diccionario = diccionario_geringoso(palabras_a_traducir)
 print(diccionario)

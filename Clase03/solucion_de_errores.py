@@ -8,15 +8,15 @@
 #una A, la función devuelve esta variable.
 #Acá va el código corregido y evaluado en las tres expresiones
 def tiene_a(expresion):
-	tiene = False
-	i=0
-	n = len(expresion)
-	letra_a = 'aAÁá'
-	while i<n and not tiene:
-		if expresion[i] in letra_a:
-			tiene = True
-		i+=1
-	return tiene
+    tiene = False
+    i=0
+    n = len(expresion)
+    letra_a = 'aAÁá'
+    while i<n and not tiene:
+        if expresion[i] in letra_a:
+            tiene = True
+        i+=1
+        return tiene
 print(tiene_a('UNSAM 2020'))
 print(tiene_a('abracadabra'))
 print(tiene_a('La novela 1984 de George Orwell'))

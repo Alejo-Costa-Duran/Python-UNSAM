@@ -1,6 +1,7 @@
 import csv
 
-def leer_camion(nombre_archivo): #Funcion que devuelve una lista de diccionarios con nombre, cantidad de cajones y precio por cajón
+def leer_camion(nombre_archivo): 
+    'Funcion que devuelve una lista de diccionarios con nombre, cantidad de cajones y precio por cajón'
     archivo = open(nombre_archivo,'rt')
     lista_camion = []
     filas = csv.reader(archivo)
@@ -18,7 +19,8 @@ def leer_camion(nombre_archivo): #Funcion que devuelve una lista de diccionarios
     archivo.close()
     return lista_camion
 
-def leer_precios(nombre_archivo): #Función que devuelve un diccionario que a cada fruta/verdura le asigna un precio
+def leer_precios(nombre_archivo):
+    'Función que devuelve un diccionario que a cada fruta/verdura le asigna un precio'
     archivo = open(nombre_archivo, 'rt')
     precios_frutas = {}
     filas = csv.reader(archivo)

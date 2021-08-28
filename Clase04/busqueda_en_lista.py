@@ -7,16 +7,22 @@ Created on Thu Aug 26 12:26:49 2021
 """
 #%%
 def buscar_u_elemento(lista,elem):
-    pos = -1
+    '''
+    Devuelve la posición de la ultima aparición del elemento "elem"
+    en la lista "lista"
+    '''
     n = len(lista)
-    index = 0
-    while index<n:
+    index = n-1
+    while index>=0:
         if lista[index]==elem:
-            pos = index
-        index+=1
-    return pos
+            return index
+        index -=1
 
 def buscar_n_elemento(lista,elem):
+    '''
+    Devuelve la cantidad de apariciones del elemento "elem"
+    en la lista "lista"
+    '''
     total = 0
     n = len(lista)
     index = 0
@@ -37,7 +43,7 @@ def maximo(lista):
     return m
 
 def minimo(lista):
-    '''Devuelve el maximo de una lista,
+    '''Devuelve el minimo de una lista,
     la lista debe ser no vacia.
     '''
     m=lista[0]

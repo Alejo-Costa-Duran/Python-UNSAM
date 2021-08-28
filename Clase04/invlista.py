@@ -8,6 +8,9 @@ Created on Thu Aug 26 14:16:07 2021
 
 #%%
 def invertir_lista(lista):
+    '''
+    Devuelve la lista "lista" en orden invertido
+    '''
     invertida = []
     for e in lista:
         invertida = [e]+invertida

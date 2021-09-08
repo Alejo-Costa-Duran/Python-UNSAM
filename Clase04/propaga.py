@@ -20,11 +20,11 @@ def propagar(lista):
         if lista[i]==1:
             siguiente = i+1
             anterior = i-1
-            while (anterior>=0) and nueva_lista[anterior]==0:
+            while (anterior>=0) and (nueva_lista[anterior]==0):
                 #Este while se encarga de la propagacion hacia los vecinos anteriores
                 nueva_lista[anterior] = 1
                 anterior -=1
-            while siguiente<n and lista[siguiente]!=-1:
+            while (siguiente<n) and (lista[siguiente]!=-1):
                 #Este while se encarga de la propagacion hacia los vecinos siguientes
                 nueva_lista.append(1)
                 siguiente += 1

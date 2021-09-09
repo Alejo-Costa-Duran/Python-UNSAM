@@ -31,11 +31,8 @@ def nueva_tirada(tirada):
         dados[e-1]+=1
     repeticiones = max(dados)
     dado_repetido = dados.index(max(dados))+1
-    if repeticiones == 1:
-        resultado = tirar()
-    else:
-        resultado = [dado_repetido for i in range(repeticiones)]
-        for nuevos in range(5-repeticiones):
+    resultado = [dado_repetido]*repeticiones
+    for nuevos in range(5-repeticiones):
             resultado.append(random.randint(1,6))
     return resultado
 
@@ -44,12 +41,9 @@ def generala_no_servida():
     Tira los dados hasta 3 veces buscando lograr una generala, devuelve True si lo consigue False si no
     '''
     tirada = tirar()
-    generala = False
-    for i in range(3):
-        if es_generala(tirada):
-            generala = True
-        tirada = nueva_tirada(tirada)
-    return generala
+    tirada = nueva_tirada(tirada)
+    tirada = nueva_tirada(tirada)
+    return es_generala(tirada)
 
 def prob_generala(N):
     return sum([generala_no_servida() for _ in range(N)])/N

@@ -21,6 +21,7 @@ def buscar_u_elemento(lista,elem):
             return index
         index +=1
     return index
+
 def buscar_n_elemento(lista,elem):
     '''
     Devuelve la cantidad de apariciones del elemento "elem"

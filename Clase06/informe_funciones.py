@@ -36,5 +36,3 @@ def imprimir_informe(informe):
 
 def informe_camion(nombre_archivo_camion,nombre_archivo_precios):
     imprimir_informe(hacer_informe(leer_camion(nombre_archivo_camion),leer_precios(nombre_archivo_precios)))
-    
-#informe_camion('../Data/camion.csv', '../Data/precios.csv')

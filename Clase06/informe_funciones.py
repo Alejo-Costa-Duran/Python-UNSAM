@@ -5,8 +5,6 @@ Created on Thu Sep  9 15:42:17 2021
 
 @author: alejinn
 """
-
-import csv
 import fileparse
 
 def leer_camion(nombre_archivo): 

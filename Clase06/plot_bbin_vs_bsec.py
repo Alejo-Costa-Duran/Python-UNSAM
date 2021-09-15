@@ -26,8 +26,10 @@ def busqueda_secuencial_(lista, x):
 def busqueda_binaria(lista, x, verbose = False):
     '''Búsqueda binaria
     Precondición: la lista está ordenada
-    Devuelve -1 si x no está en lista;
-    Devuelve p tal que lista[p] == x, si x está en lista
+    Devuelve una tupla cuyo primer elemento es:
+    -1 si x no está en lista;
+    p tal que lista[p] == x, si x está en lista
+    El segundo elemento de la tupla es la cantidad de comparaciones que se hicieron
     '''
     if verbose:
         print(f'[DEBUG] izq |der |medio')
@@ -50,14 +52,24 @@ def busqueda_binaria(lista, x, verbose = False):
 
 
 def generar_lista(n, m):
+    '''
+    Genera una lista de n elementos ordenados, cada elemento está entre 0 y m
+    '''
     l = random.sample(range(m), k = n)
     l.sort()
     return l
 
 def generar_elemento(m):
+    '''
+    Genera un entero aleatorio incluido en [0,m-1]
+    '''
     return random.randint(0, m-1)
 
 def experimento_secuencial_promedio(lista, m, k):
+    '''
+    Realiza k veces la busqueda secuencial de un elemento aleatorio en la lista
+    y devuelve la cantidad de comparaciones que tuvo que hacer
+    '''
     comps_tot = 0
     for i in range(k):
         x = generar_elemento(m)
@@ -66,11 +78,14 @@ def experimento_secuencial_promedio(lista, m, k):
     return comps_prom
 
 def experimento_binario_promedio(lista, m, k):
+    '''
+    Realiza k veces la busqueda binaria de un elemento aleatorio en la lista
+    y devuelve la cantidad de comparaciones que tuvo que hacer
+    '''
     comps_tot = 0
     for i in range(k):
         x = generar_elemento(m)
         comps_tot += busqueda_binaria(lista,x)[1]
-
     comps_prom = comps_tot / k
     return comps_prom
 
@@ -89,7 +104,7 @@ def graficar_bbin_vs_bseq(m, k):
     plt.plot(largos,comps_promedio_binario,label = 'Búsqueda Binaria')
     plt.xlabel("Largo de la lista")
     plt.xlim(0,256)
-    plt.ylim(0,128)
+    plt.ylim(0,256)
     plt.ylabel("Cantidad de comparaciones")
     plt.title("Complejidad de la Búsqueda")
     plt.legend()

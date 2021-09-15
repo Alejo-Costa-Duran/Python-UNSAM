@@ -6,7 +6,7 @@ Created on Thu Aug 26 12:26:49 2021
 @author: alejinn
 """
 #%%
-def buscar_u_elemento(lista,elem):
+def busqueda_lineal_lordenada(lista,elem):
     '''
     Devuelve la posición de la ultima aparición del elemento "elem"
     en la lista "lista"

@@ -1,4 +1,3 @@
-import csv
 import informe_funciones
 
 def costo_camion(nombre_archivo):
@@ -7,6 +6,3 @@ def costo_camion(nombre_archivo):
     for verduras in lista_camion:
         precio_total_pagado += verduras['precio']*verduras['cajones']
     return precio_total_pagado
-
-costo = costo_camion('../Data/fecha_camion.csv')
-print('Costo total:', costo)

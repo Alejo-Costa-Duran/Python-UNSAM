@@ -15,7 +15,7 @@ def valor_absoluto(n):
 #%%
 def suma_pares(l):
     '''
-    Pre: l debe ser una lista no vacía de números reales
+    Pre: l es un iterable que contiene numeros reales
     Pos: Devuelve la suma de todos los elementos pares en l
     '''
     res = 0
@@ -51,7 +51,9 @@ def collatz(n):
     desde n siguiendo la sucesión de Collatz
     '''
     res = 1
-    while n!=1:
+    while n!=1: #La conjetura de collatz dice que la aplicación sucesiva de a_n = n/2 si n par y
+                #a_n = 3n+1 si n impar siempre converge a 1. El ciclo while calcula los pasos necesarios hasta
+                #llegar a 1 partiendo de un numero n
         if n % 2 == 0:
             n = n//2
         else:

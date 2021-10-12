@@ -30,15 +30,13 @@ def fecha_reincorporacion(start_date, licencia):
     return end_date
 
 #%% Ej 8.4
-
 def dias_habiles(inicio, fin, feriados):
     init_date = datetime.datetime.strptime(inicio, "%d/%m/%Y")
     end_date = datetime.datetime.strptime(fin, "%d/%m/%Y")
     feriados_ls = [datetime.datetime.strptime(feriado, "%d/%m/%Y") for feriado in feriados]
     amount_days = (end_date-init_date).days    
-    finde = (5,6)
     dias_laborables = [ datetime.datetime.strftime(y, "%d/%m/%Y") for x in range(amount_days+1)
-                       if ((y:= init_date+datetime.timedelta(x)) not in feriados_ls) and (y.weekday() not in finde)]
+                       if ((y:= init_date+datetime.timedelta(x)) not in feriados_ls) and (y.weekday() < 4)]
     return dias_laborables
 
 #%% Ej 8.5

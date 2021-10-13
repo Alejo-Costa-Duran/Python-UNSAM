@@ -14,7 +14,7 @@ import formato_tabla
 
 
 def leer_camion(nombre_archivo): 
-    'Funcion que devuelve una lista de diccionarios con nombre, cantidad de cajones y precio por cajón'
+    'Funcion que devuelve una lista de lotes con nombre, cantidad de cajones y precio por cajón'
     with open(nombre_archivo) as lineas:
         camion_dicts = fileparse.parse_csv(lineas, select = ['nombre', 'cajones', 'precio'], types = [str, int, float])
     camion = [lote.Lote(d['nombre'], d['cajones'], d['precio']) for d in camion_dicts]
@@ -40,6 +40,12 @@ def imprimir_informe(informe, formateador):
         formateador.fila(rowdata)
 
 def informe_camion(archivo_camion,archivo_precios, fmt='txt'):
+    '''
+    Crea un informe con la carga de un camión
+    a partir de archivos camion y precio.
+    El formato predeterminado de la salida es .txt
+    Alternativas: .csv o .html
+    '''
     camion = leer_camion(archivo_camion)
     precios = dict(leer_precios(archivo_precios))
 

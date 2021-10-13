@@ -13,7 +13,7 @@ class Lote:
         self.cajones -= num_cajon
 
     def __repr__(self):
-        return f'Lote({self.nombre}, {self.cajones}, {self.precio})'
+        return f'Lote("{self.nombre}", {self.cajones}, {self.precio})'
 
 
 if __name__ == '__main__':

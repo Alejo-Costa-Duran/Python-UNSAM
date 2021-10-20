@@ -7,6 +7,7 @@ Created on Wed Oct  7 14:00:00 2020
 
 from animal import Leon, Antilope
 from tablero import Tablero
+import matplotlib.pyplot as plt
 
 
 def print_debug(msg, print_flag=False):
@@ -64,7 +65,16 @@ class Mundo(object):
 
     def etapa_reproduccion(self):
         print_debug(f"Iniciando Reproducción en ciclo {self.ciclo}", self.debug)
-        # pass
+        for p in self.tablero.posiciones_ocupadas():
+            animal = self.tablero.posicion(p)
+            animales_cercanos = self.tablero.posiciones_vecinas_con_ocupantes(p)
+            posiciones_libres = self.tablero.posiciones_vecinas_libre(p)
+            pos_cria = animal.reproducirse(animales_cercanos,posiciones_libres)
+            if pos_cria[0]:
+                if pos_cria[1] == 'Antilope':
+                    self.tablero.ubicar(pos_cria[0],Antilope())
+                elif pos_cria[1] == 'Leon':
+                    self.tablero.ubicar(pos_cria[0],Leon())
 
     def cerrar_un_ciclo(self):
         print_debug(f"Concluyendo ciclo {self.ciclo}", self.debug)
@@ -96,3 +106,20 @@ class Mundo(object):
 
     def __str__(self):
         return self.__repr__()
+    
+
+antilopes = []
+leones = []
+import time
+mundo_prueba = Mundo(80,80,150,700)
+for i in range(100):
+    antilopes.append(mundo_prueba.cant_antilopes())
+    leones.append(mundo_prueba.cant_leones())
+    mundo_prueba.pasar_un_ciclo()
+    #print(mundo_prueba)
+    #time.sleep(0.5)
+    
+
+plt.plot(antilopes,label='Antilopes')
+plt.plot(leones,label='Leones')
+plt.legend()

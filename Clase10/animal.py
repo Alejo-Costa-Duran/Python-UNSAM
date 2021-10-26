@@ -20,7 +20,7 @@ class Animal(object):
     def pasar_un_ciclo(self):
         self.energia -= 1 # Se puede restar si no llega a comer
         self.edad += 1
-        if self.reproducciones_pendientes > 0: #
+        if self.reproducciones_pendientes > 0 and self.edad >=1: #
             self.es_reproductore = True
 
     def en_vida(self):
@@ -44,17 +44,17 @@ class Animal(object):
     def tener_cria(self):
         """Acá se puede poner comportamiento que sucede al tener cria para evitar que tengamás de una cria por ciclo, etc"""
         self.reproducciones_pendientes -= 1
+        self.es_reproductore = False
         # pass
 
     def reproducirse(self, vecinos, lugares_libres):
         pos = None
         if vecinos:
             animal = random.choice(vecinos)
-            if lugares_libres:
+            if lugares_libres and animal.puede_reproducir() and self.puede_reproducir():
                 animal.tener_cria()
                 self.tener_cria()
                 pos = random.choice(lugares_libres)
-
         return pos
 
     def alimentarse(self, animales_vecinos = None):
@@ -99,7 +99,12 @@ class Leon(Animal):
 
         return pos
 
-
+    def reproducirse(self, vecinos, lugares_libres):
+        pos_cria = None
+        vecinos = [animal for (pos,animal) in vecinos if animal.es_leon()]
+        pos_cria = super(Leon,self).reproducirse(vecinos, lugares_libres)
+        return (pos_cria,'Leon')
+    
     def __repr__(self):
         # return "León"
         return "L{}".format(self.edad)
@@ -113,6 +118,12 @@ class Antilope(Animal):
         self.edad_maxima = 6
         super(Antilope, self).__init__()
         self.reproducciones_pendientes = 3
+        
+    def reproducirse(self, vecinos, lugares_libres):
+        pos_cria = None
+        vecinos = [animal for (pos,animal) in vecinos if animal.es_antilope()]
+        pos_cria = super(Antilope,self).reproducirse(vecinos, lugares_libres)
+        return (pos_cria, 'Antilope')
 
     def es_antilope(self):
         return True
